@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Moodle Wrapper - Calendar</title>
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Шапка: простая, без теней/градиентов -->
+<header class="site-header" role="banner">
+    <div class="container row">
+        <div class="brand">
+            <div class="logo" aria-hidden="true"></div>
+            <a class="brand-name" href="#">My University · LMS</a>
+        </div>
+
+        <nav class="topnav" aria-label="Основное меню">
+            <ul>
+                <li><a href="Courses.html">Курсы</a></li>
+                <li><a href="calendar.html"  class="active">Календарь</a></li>
+                <li><a href="#">Оценки</a></li>
+            </ul>
+        </nav>
+
+        <form role="search" aria-label="Поиск" class="search">
+            <input type="search" placeholder="Поиск по курсам…">
+            <input type="submit" value="Найти">
+        </form>
+    </div>
+</header>
+
+<!-- Main container -->
+
+<div class="container app">
+
+        <!-- Левая навигация (иконки можно заменить текстом) -->
+    <nav class="sidenav" aria-label="Быстрая навигация">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="Courses.html">Курсы</a></li>
+            <li><a class="active" href="calendar.html">Календарь</a></li>
+            <li><a href="#">Сообщения</a></li>
+            <li><a href="#">Настройки</a></li>
+        </ul>
+    </nav>
+
+<!-- Контент -->
+<main class="Wrapper-calendar-content">
+  <div class="calendar-container">
+
+    <!-- Левая часть (календарь) -->
+    <div class="calendar">
+      <div class="site-layout-background">
+        <h2 class="ant-typography">
+          Календарь для пользователя LMS
+        </h2>
+        <div class="desktop-table">
+          <div class="ant-table-wrapper">
+            <div class="ant-spin-nested-loading">
+              <div class="ant-spin-container">
+                <div class="ant-table ant-table-middle ant-table-bordered">
+                  <div class="ant-table-container">
+                    <div class="ant-table-content">
+                      <table>
+                        <colgroup>
+                          <col style="width: 10%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                        </colgroup>
+                        <thead>
+                          <tr>
+                            <th>Time</th>
+                            <th>Понедельник</th>
+                            <th>Вторник</th>
+                            <th>Среда</th>
+                            <th>Четверг</th>
+                            <th>Пятница</th>
+                            <th>Суббота</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>08:00 - 10:00</td>
+                            <td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td><td></td><td></td><td></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>10:00 - 12:00</td>
+                            <td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td><td></td><td></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>12:00 - 14:00</td>
+                            <td></td><td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td><td></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>14:00 - 16:00</td>
+                            <td></td><td></td><td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>16:00 - 18:00</td>
+                            <td></td><td></td><td></td><td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>18:00 - 20:00</td>
+                            <td></td><td></td><td></td><td></td><td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Правая часть (задачи) -->
+    <div class="task">
+      <div class="ant-card ant-card-bordered">
+        <div class="ant-card-body">
+          <h3 class="ant-typography">Задачи на сегодня</h3>
+          <ul class="task-list">
+            <li class="task-item">
+              <a href="Courses.html" for="task1"><b>Web Technologies</b> Assigment 2</a>
+            </li>
+            <li class="task-item">
+              <a href="Courses.html" for="task2"><b>Finance</b> Midterm 1 part</a>
+            </li>
+            <li class="task-item">
+              <a href="Courses.html" for="task3"><b>Calculus</b> <br> F</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+</div>
+<!-- Подвал -->
+<footer class="site-footer" role="contentinfo">
+    <div class="container row">
+        <nav aria-label="Ссылки подвала">
+            <ul class="footlinks">
+                <li><a href="#">Справка</a></li>
+                <li><a href="#">Поддержка</a></li>
+                <li><a href="#">Политика</a></li>
+            </ul>
+        </nav>
+        <small class="copy">© 2025 My University</small>
+    </div>
+</footer>
+</body>
+</html>
