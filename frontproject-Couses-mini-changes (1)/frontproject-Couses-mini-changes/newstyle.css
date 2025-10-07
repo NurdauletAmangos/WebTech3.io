@@ -1,0 +1,128 @@
+```css
+    /* assignment4.css */
+
+:root {
+    --main-color: #0d6efd;
+    --space: 1rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    color: #222;
+}
+
+/* Typography responsive */
+h1, h2, h3, h4, h5, h6 { line-height: 1.25; }
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.3rem; }
+
+@media (max-width: 575.98px) {
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+    p { font-size: .95rem; }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
+    p { font-size: 1.05rem; }
+}
+
+@media (min-width: 992px) {
+    h1 { font-size: 2.6rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.4rem; }
+    p { font-size: 1.1rem; }
+}
+
+/* Custom non-Bootstrap cards (Part 1) */
+.custom-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--space) * 1.25);
+    margin-top: 2rem;
+}
+
+.custom-card {
+    flex: 1 1 calc(33.333% - var(--space));
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    padding: var(--space);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.custom-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.custom-card img {
+    border-radius: .5rem;
+}
+
+.custom-card h3 {
+    margin: .25rem 0;
+    font-size: 1.2rem;
+    color: var(--main-color);
+}
+
+.custom-card p {
+    flex: 1;
+    color: #444;
+}
+
+.custom-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--main-color);
+    color: #fff;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    transition: background .2s ease;
+}
+
+.custom-btn:hover {
+    background: #0b5ed7;
+}
+
+@media (max-width: 991.98px) {
+    .custom-card { flex-basis: calc(50% - var(--space)); }
+}
+
+@media (max-width: 575.98px) {
+    .custom-card { flex-basis: 100%; }
+}
+
+/* Extra styling tweaks for Bootstrap sections */
+section {
+    margin-bottom: 4rem;
+}
+
+header {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: #fff;
+}
+
+header h1, header p {
+    color: #fff;
+}
+
+footer {
+    font-size: .95rem;
+}
+```

@@ -1,0 +1,469 @@
+:root{
+    --bordo: #7b1e3d; /* основной бордовый */
+    --bordo-dark: #5e142d; /* тёмный бордо для ховеров */
+    --accent: #e63946; /* красный акцент */
+    --ink: #1f2937; /* тёмный текст */
+    --muted: #6b7280; /* спокойный серый */
+    --bg: #f7f7f7; /* общий фон */
+    --card: #ffffff; /* фон карточек */
+    --line: #e5e7eb; /* тонкая граница */
+    --radius: 8px;
+}
+*{ box-sizing: border-box; }
+body{ margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background: var(--bg); }
+
+
+.container{ max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.row{ display:flex; align-items:center; gap:16px; }
+
+
+/* header */
+.site-header{ height:50px; background: var(--bordo); color: #fff; }
+.site-header .brand{margin-left: -15px; display:flex; align-items:center; gap:10px; font-weight:600; }
+.logo{margin-top: 5px; width:28px; height:28px; border-radius:6px; background: #fff; }
+.brand-name{margin-top: 5px; color:#fff; text-decoration:none; }
+
+.topnav { margin-left:32px; margin-top: 5px;}
+.topnav ul{ list-style:none; margin:0; padding:0; display:flex; gap:10px; }
+.topnav a{ color:#fff; text-decoration:none; padding:8px 10px; border-radius:6px; }
+.topnav a:hover, .topnav a.active{ background: var(--bordo-dark); }
+
+
+.search{ margin-left:auto; display:flex; gap:8px; margin-top: 8px;}
+.search input{ padding:8px 12px; border:1px solid var(--bordo-dark); background: #fff; color: var(--bordo-dark); border-radius:6px; cursor:pointer; }
+.search input:hover{ background:#f3f4f6; }
+
+/* Courses container*/
+
+.my-courses-list-block {list-style: none;padding: 0;margin: 20px auto;max-width: 900px;}
+.my-courses-list-block .course {display: flex;flex-direction: row;align-items: flex-start;background: 
+    #fff;border: 1px solid #ddd;border-radius: 10px;padding: 20px;box-shadow: 0 3px 8px 
+    rgba(0, 0, 0, 0.08);transition: 0.2s ease-in-out;}
+.my-courses-list-block .course-item {margin-bottom: 20px;}
+.my-courses-list-block .wrapper-course-image {margin-right: 20px;flex-shrink: 0;}
+.my-courses-list-block .course-image {width: 100px;height: 100px;object-fit: cover;border-radius: 8px;background: #f0f0f0;}
+.my-courses-list-block .course-image:hover {box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);}
+.my-courses-list-block .wrapper-course-details {flex: 1;}
+.my-courses-list-block .course-title {margin: 0 0 10px;font-size: 20px;font-weight: bold;color: #0066cc;}
+.my-courses-list-block .course-title a {text-decoration: none;color: inherit;}
+.my-courses-list-block .course-info {font-size: 14px;color: #555;margin-bottom: 15px;}
+.my-courses-list-block .wrapper-course-actions {margin-top: 10px;}
+.my-courses-list-block .course-action-link {display: inline-block;padding: 8px 14px;border: 1px solid #0066cc;border-radius: 6px;color: #0066cc;text-decoration: none;font-size: 14px;transition: 0.2s;}
+.my-courses-list-block .course-action-link:hover {background: #0066cc;color: white;}
+
+/* app grid */
+.app{ display:grid; grid-template-columns: 180px 1fr 300px; gap:16px; padding:16px 0 24px; }
+@media (max-width: 1000px){ .app{ grid-template-columns: 160px 1fr; } .sidebar{ display:none; } }
+
+/* Container with calendar and dash board */
+.Wrapper-calendar-content .calendar-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Calendar */
+.Wrapper-calendar-content .calendar {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  padding-left: 24px;
+  padding-right: 40px;
+}
+
+.Wrapper-calendar-content table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 14px;
+}
+
+.Wrapper-calendar-content th, 
+.Wrapper-calendar-content td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.Wrapper-calendar-content th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+/* Dash board */
+.Wrapper-calendar-content .task {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.Wrapper-calendar-content .task h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: var(--bordo-dark);
+}
+
+.Wrapper-calendar-content .task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Wrapper-calendar-content .task-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.Wrapper-calendar-content .task-item a {
+  margin-right: 10px;
+  transform: scale(0.95);
+    text-decoration: none;
+    color: var(--ink);
+}
+
+/* main */
+.breadcrumbs{ color: var(--muted); font-size:14px;  }
+.breadcrumbs ol{ list-style:none; display:flex; gap:6px; padding:0; margin:0 0 8px; }
+.breadcrumbs li::after{ content:"/"; margin-left:6px; color: var(--line); }
+.breadcrumbs li:last-child::after{ content:""; }
+.pagehead h1{ margin: 6px 0 4px; }
+.pagehead h2{ margin: 6px 0 4px; }
+.pagehead .sub{ margin:0 0 12px; color: var(--muted); }
+
+
+
+.card{ background: var(--card); border:1px solid var(--line); border-radius: var(--radius); padding:16px; }
+.list{ list-style:disc; padding-left:20px; }
+
+
+.btn{ display:inline-block; padding:10px 14px; border-radius:6px; background: var(--accent); color:#fff; text-decoration:none; }
+.btn:hover{ background:#cf2d3a; }
+
+
+/* right sidebar */
+.sidebar { align-self:start; position:sticky; top:12px; }
+.panel {margin-bottom:6px; background: var(--card);border: 1px solid var(--line);border-radius: var(--radius);padding: 16px;}
+.panel h2 {margin: 0 0 8px;font-size: 16px;color: var(--bordo-dark);}
+.panel .list {list-style: none;padding: 0;margin: 0;display: grid;gap: 8px;}
+.panel .list a {color: var(--ink);text-decoration: none;}
+.panel .list a:hover {color: var(--bordo-dark);}
+
+/* side nav */
+.sidenav{ align-self:start; position:sticky; top:12px; }
+.sidenav ul{ list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+.sidenav a{ display:block; padding:10px 12px; border:1px solid var(--line); border-radius:6px; text-decoration:none; color: var(--ink); background: #fff; }
+.sidenav a:hover, .sidenav a.active{ border-color: var(--bordo); color: var(--bordo-dark); }
+
+
+
+/* footer */
+.site-footer {background: var(--bordo);color: #fff;position: fixed;left: 0;bottom: 0;width: 100%;padding: 12px 0;}
+
+
+.footlinks{ list-style:none; margin:0; padding:0; display:flex; gap:12px; }
+.footlinks a{ color:#fff; text-decoration:none; }
+.copy{ margin-left:auto; }
+
+
+
+
+
+
+/* ============================================================
+   RESPONSIVE + BOOTSTRAP-STYLE ADDITIONS FOR ASSIGNMENT #4
+   ============================================================ */
+
+/* === 1. Подключаем адаптивную типографику === */
+@media (max-width: 768px) {
+  body { font-size: 14px; }
+  h1, h2 { font-size: 22px; }
+  h3 { font-size: 18px; }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  body { font-size: 15px; }
+  h1, h2 { font-size: 26px; }
+  h3 { font-size: 20px; }
+}
+
+@media (min-width: 1201px) {
+  body { font-size: 16px; }
+  h1, h2 { font-size: 30px; }
+  h3 { font-size: 22px; }
+}
+
+/* === 2. Карточки (Cards) с адаптацией под экран === */
+.my-courses-list-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.my-courses-list-block .course {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.my-courses-list-block .wrapper-course-image {
+  margin: 0 0 12px 0;
+}
+.my-courses-list-block .course-image {
+  width: 100%;
+  max-width: 220px;
+  height: 140px;
+}
+
+/* === 3. Календарь адаптивный === */
+@media (max-width: 992px) {
+  .Wrapper-calendar-content .calendar-container {
+    grid-template-columns: 1fr;
+  }
+  .Wrapper-calendar-content .calendar,
+  .Wrapper-calendar-content .task {
+    padding: 16px;
+  }
+}
+
+/* === 4. Bootstrap-подобные spacing utilities === */
+.mt-1 { margin-top: 4px !important; }
+.mt-2 { margin-top: 8px !important; }
+.mt-3 { margin-top: 16px !important; }
+.mt-4 { margin-top: 24px !important; }
+
+.mb-1 { margin-bottom: 4px !important; }
+.mb-2 { margin-bottom: 8px !important; }
+.mb-3 { margin-bottom: 16px !important; }
+.mb-4 { margin-bottom: 24px !important; }
+
+.p-1 { padding: 4px !important; }
+.p-2 { padding: 8px !important; }
+.p-3 { padding: 16px !important; }
+.p-4 { padding: 24px !important; }
+
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+/* === 5. Bootstrap-подобные кнопки === */
+.btn-primary {
+  background-color: var(--bordo);
+  border: 1px solid var(--bordo-dark);
+  color: #fff;
+  transition: 0.3s;
+}
+.btn-primary:hover {
+  background-color: var(--bordo-dark);
+}
+
+.btn-secondary {
+  background-color: var(--muted);
+  border: 1px solid var(--line);
+  color: #fff;
+}
+.btn-secondary:hover {
+  background-color: #555;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--bordo);
+  color: var(--bordo);
+}
+.btn-outline:hover {
+  background: var(--bordo);
+  color: #fff;
+}
+
+.btn-lg { padding: 12px 20px; font-size: 18px; border-radius: 8px; }
+.btn-sm { padding: 6px 10px; font-size: 14px; border-radius: 6px; }
+
+/* === 6. Форма (Bootstrap form style) === */
+form input[type="text"],
+form input[type="search"],
+form input[type="email"],
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  transition: 0.2s;
+}
+form input:focus,
+form textarea:focus {
+  border-color: var(--bordo);
+  outline: none;
+  box-shadow: 0 0 4px rgba(123, 30, 61, 0.3);
+}
+
+/* === 7. Navbar адаптивная === */
+@media (max-width: 768px) {
+  .topnav ul {
+    flex-direction: column;
+    gap: 4px;
+    background: var(--bordo);
+    padding: 8px;
+    border-radius: 6px;
+  }
+  .search { display: none; }
+}
+
+/* === 8. Карусель (Bootstrap-like layout) === */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 20px 0;
+}
+.carousel img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === 9. Доступность и контраст === */
+:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+
+
+
+
+
+/* ============================================================
+   LOGIN PAGE STYLES
+   ============================================================ */
+
+   /* ========== FIX BOOTSTRAP CONFLICTS + GRID CORRECTION ========== */
+
+/* Убираем конфликт с Bootstrap container/row */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  /* убрал display/flex, чтобы Bootstrap управлял */
+}
+
+.row {
+  /* убираем свой flex, чтобы Bootstrap row не ломался */
+  display: block;
+  gap: 0;
+}
+
+/* Основная сетка приложения */
+.app {
+  display: grid;
+  grid-template-columns: 180px 1fr 300px;
+  gap: 16px;
+  padding: 16px 0 24px;
+  align-items: start;
+}
+
+/* На маленьких экранах */
+@media (max-width: 1000px) {
+  .app {
+    grid-template-columns: 160px 1fr;
+  }
+  .sidebar {
+    display: none;
+  }
+}
+
+/* Убираем лишние отступы у карусели, чтобы не ломала контейнер */
+.carousel {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  margin-bottom: 24px;
+}
+
+/* Картинки карусели адаптивные */
+.carousel img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+/* Курсы: верстаем сеткой, а не флексом */
+.my-courses-list-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+/* Выровненные карточки */
+.my-courses-list-block .course {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease-in-out;
+  align-items: center;
+  text-align: center;
+}
+
+.my-courses-list-block .wrapper-course-image {
+  margin-bottom: 12px;
+}
+
+.my-courses-list-block .course-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f0f0f0;
+}
+
+.my-courses-list-block .wrapper-course-details {
+  flex: 1;
+}
+
+.my-courses-list-block .course-title {
+  margin: 10px 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--bordo-dark);
+}
+
+.my-courses-list-block .course-action-link {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid var(--bordo);
+  border-radius: 6px;
+  color: var(--bordo);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.my-courses-list-block .course-action-link:hover {
+  background: var(--bordo);
+  color: white;
+}
+
+/* Исправленный подвал */
+.site-footer {
+  background: var(--bordo);
+  color: #fff;
+  width: 100%;
+  padding: 16px 0;
+  position: relative;
+  bottom: 0;
+}
+
+/* Исправление для .text-center блока кнопок */
+.text-center .btn {
+  margin: 8px;
+}
