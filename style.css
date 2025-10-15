@@ -180,10 +180,7 @@ body{ margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial
 
 
 
-
-
-
-/* Сообщения об ошибках под полями */
+/* Login pattern*/
 .error-message {
   color: #e63946;
   font-size: 13px;
@@ -192,13 +189,11 @@ body{ margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial
   height: 14px;
 }
 
-/* Красная рамка для ошибочных полей */
 .login-input:invalid,
 .login-input.error {
   border-color: #e63946;
 }
 
-/* Эффект при фокусе */
 .login-input:focus {
   outline: none;
   border-color: var(--bordo);
@@ -225,14 +220,13 @@ body{ margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial
     cursor: pointer;
     color: var(--ink);
     position: relative;
-    padding-right: 30px; /* Место для иконки */
+    padding-right: 30px; 
 }
 
 .accordion-header:hover {
     background-color: #f9f9f9;
 }
 
-/* Иконка-стрелка */
 .accordion-header::after {
     content: '+';
     font-size: 20px;
