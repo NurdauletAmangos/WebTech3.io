@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Поддержка — FAQ</title>
+    <link rel="stylesheet" href="firststyle.css" />
+</head>
+<body>
+<header class="site-header" role="banner">
+    <div class="container row">
+        <div class="brand">
+            <div class="logo" aria-hidden="true"></div>
+            <a class="brand-name" href="first.html">My University · LMS</a>
+        </div>
+
+        <nav class="topnav" aria-label="Основное меню">
+            <ul>
+                <li><a href="courses.html">Курсы</a></li>
+                <li><a href="calendar.html">Календарь</a></li>
+                <li><a class="active" href="support.html">Поддержка</a></li>
+            </ul>
+        </nav>
+
+        <form role="search" aria-label="Поиск" class="search">
+        <input type="search" id="search-input" placeholder="Поиск по курсам…">
+        <ul id="suggestions"></ul> <!-- список подсказок -->
+        <button type="submit">Найти</button>
+        </form>
+    </div>
+</header>
+
+<div class="container app">
+    <nav class="sidenav" aria-label="Навигация по разделам">
+        <ul>
+            <li><a href="home.html">Главная</a></li>
+            <li><a href="courses.html">Курсы</a></li>
+            <li><a href="calendar.html">Календарь</a></li>
+            <li><a class="active" href="support.html">Поддержка</a></li>
+        </ul>
+    </nav>
+
+    <main id="maincontent" role="main">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ol>
+                <li><a href="home.html">Главная</a></li>
+                <li aria-current="page">Поддержка</li>
+            </ol>
+        </nav>
+
+        <header class="pagehead">
+            <h1>Центр поддержки</h1>
+            <p class="sub">Часто задаваемые вопросы и полезная информация</p>
+        </header>
+
+        <!-- Блоки-«карточки» контента -->
+        <section class="card">
+            <h2>Работа с файлами</h2>
+            <ul class="list">
+                <li>
+                    <strong>Как добавить файлы?</strong>
+                    <div class="box">
+                        Для добавления файлов используйте кнопку "Добавить файлы" или перетащите их в область загрузки. Доступна также кнопка "+" для быстрого добавления.
+                    </div>
+                </li>
+                <li>
+                    <strong>Какие типы файлов поддерживаются?</strong>
+                    <div class="box">
+                        Документы (PDF, DOC, DOCX), изображения (JPG, PNG, GIF), архивы (ZIP, RAR) и др. Макс. размер - 100 МБ.
+                    </div>
+                </li>
+                <li>
+                    <strong>Как организовать файлы в папки?</strong>
+                    <div class="box">
+                        Функция создания папок в разработке. Следите за обновлениями.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Учетная запись и безопасность</h2>
+            <ul class="list">
+                <li>
+                    <strong>Как изменить пароль?</strong>
+                    <div class="box">
+                        Профиль - Безопасность - Изменить пароль. Используйте сложные пароли.
+                    </div>
+                </li>
+                <li>
+                    <strong>Мои файлы защищены?</strong>
+                    <div class="box">
+                        Да, файлы хранятся в зашифрованном виде и доступны только вам и преподавателям соответствующих курсов.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Технические вопросы</h2>
+            <ul class="list">
+                <li>
+                    <strong>Файлы не загружаются — что делать?</strong>
+                    <div class="box">
+                        Проверьте интернет-соединение, размер файла (<100 МБ) и попробуйте другой браузер. Если не помогло - обратитесь в поддержку.
+                    </div>
+                </li>
+                <li>
+                    <strong>Поставят ли нам 100 баллов?</strong>
+                    <div class="box">Да</div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <aside class="sidebar" aria-label="Контакты и полезное">
+        <section class="panel">
+            <h2>Связаться с нами</h2>
+            <ul class="list">
+                <li><a href="#">Задать вопрос</a></li>
+                <li><a href="#">Сообщить о проблеме</a></li>
+                <li><a href="#">Статус инцидентов</a></li>
+            </ul>
+        </section>
+
+        <section class="panel">
+            <h2>Быстрые ссылки</h2>
+            <ul class="list">
+                <li><a href="home.html">Главная</a></li>
+                <li><a href="file.html">Личные файлы</a></li>
+                <li><a href="support.html">Политика</a></li>
+            </ul>
+        </section>
+    </aside>
+</div>
+
+<footer class="site-footer" role="contentinfo">
+    <div class="container row">
+        <nav aria-label="Ссылки подвала">
+            <ul class="footlinks">
+                <li><a href="#">Справка</a></li>
+                <li><a class="active" href="support.html">Поддержка</a></li>
+                <li><a href="support.html">Политика</a></li>
+            </ul>
+        </nav>
+        <small class="copy">Made by Team Insignia</small>
+    </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
