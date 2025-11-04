@@ -626,9 +626,309 @@ function showNotification(message, type = "info") {
 
 
 
+function initFileManager() {
+    // Эта функция уже реализована в file-manager.js
+    // Оставьте её пустой или удалите, если используете отдельный файл
+}
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            if (newTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeToggle.textContent = 'Светлая тема';
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggle.textContent = 'Темная тема';
+            }
+            
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Set initial state
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            themeToggle.textContent = 'Светлая тема';
+        }
+    }
+}
+
+// File Manager functionality
+class FileManager {
+    constructor() {
+        this.files = JSON.parse(localStorage.getItem('userFiles')) || [];
+        this.init();
+    }
+
+    init() {
+        this.bindEvents();
+        this.renderFiles();
+        this.initTheme();
+        this.initUserMenu();
+    }
+
+    bindEvents() {
+        // File input events
+        document.getElementById('addFileBtn').addEventListener('click', () => {
+            document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('addFilePlusBtn').addEventListener('click', () => {
+            document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            this.handleFiles(e.target.files);
+        });
+
+        // Drag and drop events
+        const dropZone = document.getElementById('dropArea');
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, this.preventDefaults, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => this.highlight(dropZone), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => this.unhighlight(dropZone), false);
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            this.handleFiles(files);
+        });
+
+        // Search functionality
+        document.getElementById('fileSearch').addEventListener('input', (e) => {
+            this.handleSearch(e.target.value);
+        });
+
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            this.toggleTheme();
+        });
+
+        // User menu
+        document.getElementById('userMenuBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleUserMenu();
+        });
+
+        // Close user menu when clicking outside
+        document.addEventListener('click', () => {
+            this.closeUserMenu();
+        });
+    }
+
+    preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    highlight(element) {
+        element.classList.add('drag-over');
+    }
+
+    unhighlight(element) {
+        element.classList.remove('drag-over');
+    }
+
+    handleFiles(fileList) {
+        for (let i = 0; i < fileList.length; i++) {
+            const file = fileList[i];
+            this.addFile(file);
+        }
+        this.renderFiles();
+        this.showNotification(`Added ${fileList.length} file(s)`, 'success');
+    }
+
+    addFile(file) {
+        const fileData = {
+            id: Date.now() + Math.random(),
+            name: file.name,
+            size: this.formatFileSize(file.size),
+            type: file.type,
+            uploadDate: new Date().toLocaleDateString(),
+            content: file
+        };
+
+        this.files.push(fileData);
+        this.saveToLocalStorage();
+    }
+
+    formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    getFileIcon(type) {
+        if (type.includes('image')) return '🖼️';
+        if (type.includes('pdf')) return '📄';
+        if (type.includes('word') || type.includes('document')) return '📝';
+        if (type.includes('excel') || type.includes('spreadsheet')) return '📊';
+        if (type.includes('video')) return '🎬';
+        if (type.includes('audio')) return '🎵';
+        if (type.includes('zip') || type.includes('archive')) return '📦';
+        return '📁';
+    }
+
+    renderFiles(filteredFiles = null) {
+        const filesToRender = filteredFiles || this.files;
+        const filesGrid = document.getElementById('filesGrid');
+        
+        if (filesToRender.length === 0) {
+            filesGrid.innerHTML = '<p class="no-files">No files uploaded yet</p>';
+            return;
+        }
+
+        filesGrid.innerHTML = filesToRender.map(file => `
+            <div class="file-item" data-file-id="${file.id}">
+                <div class="file-icon">${this.getFileIcon(file.type)}</div>
+                <div class="file-name">${file.name}</div>
+                <div class="file-size">${file.size}</div>
+                <div class="file-date">${file.uploadDate}</div>
+            </div>
+        `).join('');
+
+        // Add click events to file items
+        filesGrid.querySelectorAll('.file-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const fileId = item.dataset.fileId;
+                this.downloadFile(fileId);
+            });
+        });
+    }
+
+    downloadFile(fileId) {
+        const file = this.files.find(f => f.id == fileId);
+        if (file) {
+            this.showNotification(`Downloading ${file.name}`, 'info');
+            // In a real application, you would implement actual file download
+            console.log('Downloading file:', file.name);
+        }
+    }
+
+    handleSearch(query) {
+        const suggestionsContainer = document.getElementById('searchSuggestions');
+        
+        if (query.length === 0) {
+            suggestionsContainer.style.display = 'none';
+            this.renderFiles();
+            return;
+        }
+
+        const filteredFiles = this.files.filter(file => 
+            file.name.toLowerCase().includes(query.toLowerCase())
+        );
+
+        // Show suggestions
+        if (filteredFiles.length > 0) {
+            suggestionsContainer.innerHTML = filteredFiles
+                .slice(0, 5)
+                .map(file => `
+                    <div class="search-suggestion-item" data-file-name="${file.name}">
+                        ${file.name}
+                    </div>
+                `).join('');
+
+            suggestionsContainer.style.display = 'block';
+
+            // Add click events to suggestions
+            suggestionsContainer.querySelectorAll('.search-suggestion-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const fileName = item.dataset.fileName;
+                    document.getElementById('fileSearch').value = fileName;
+                    suggestionsContainer.style.display = 'none';
+                    this.renderFiles(this.files.filter(f => f.name === fileName));
+                });
+            });
+        } else {
+            suggestionsContainer.style.display = 'none';
+        }
+
+        this.renderFiles(filteredFiles);
+    }
+
+    initTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        this.setTheme(savedTheme);
+    }
+
+    toggleTheme() {
+        const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        this.setTheme(newTheme);
+    }
+
+    setTheme(theme) {
+        const themeToggle = document.getElementById('themeToggle');
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            themeToggle.textContent = 'Светлая тема';
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggle.textContent = 'Темная тема';
+        }
+        localStorage.setItem('theme', theme);
+    }
+
+    initUserMenu() {
+        // User menu is handled in bindEvents
+    }
+
+    toggleUserMenu() {
+        const dropdown = document.getElementById('userDropdown');
+        dropdown.classList.toggle('show');
+    }
+
+    closeUserMenu() {
+        const dropdown = document.getElementById('userDropdown');
+        dropdown.classList.remove('show');
+    }
+
+    showNotification(message, type = 'info') {
+        // Use your existing notification system
+        if (typeof showNotification === 'function') {
+            showNotification(message, type);
+        } else {
+            // Fallback notification
+            console.log(`${type}: ${message}`);
+        }
+    }
+
+    saveToLocalStorage() {
+        localStorage.setItem('userFiles', JSON.stringify(this.files));
+    }
+}
+
+// Initialize file manager when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new FileManager();
+});
+
+// Close search suggestions when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-container')) {
+        document.getElementById('searchSuggestions').style.display = 'none';
+    }
+});
+
+// Обновите функцию DOMContentLoaded в script.js:
 document.addEventListener("DOMContentLoaded", ()=>{
     initAccordion();
-    initThemeToggle();
+    initTheme();
     initShowTime();
     initReadMore();
     initStars();
@@ -636,12 +936,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
     initMenuKeyboardNav();
     initLoadMore();
     initSoundOnAction();
-
     initBackgroundChanger();
     initClockTicker();
     initScrollProgressBar();
     initCounterUp();
     initCopyToClipboard();
     initLazyLoadImages();
-
+    
+    // Инициализация файлового менеджера, если мы на странице файлов
+    if (document.querySelector('.filedrop')) {
+        initFileManager();
+    }
 });
