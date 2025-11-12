@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Moodle Wrapper - Calendar</title>
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Шапка: простая, без теней/градиентов -->
+<header class="site-header" role="banner" style="grid-area:header">
+    <div class="container row" style="width:100%">
+        <div class="brand">
+            <div class="logo" aria-hidden="true"></div>
+            <a class="brand-name" href="#">My University · LMS</a>
+        </div>
+
+        <nav class="topnav" aria-label="Основное меню">
+            <ul id="topMenu" role="menubar">
+                <li role="none"><a role="menuitem" href="Courses.html" tabindex="-1">Курсы</a></li>
+                <li role="none"><a role="menuitem" href="calendar.html" class="active" tabindex="0">Календарь</a></li>
+                <li role="none"><a role="menuitem" href="#" tabindex="-1">Поддержка</a></li>
+            </ul>
+        </nav>
+
+        <form role="search" aria-label="Поиск" class="search">
+        <input type="search" id="search-input" placeholder="Поиск по курсам…">
+        <ul id="suggestions"></ul> <!-- список подсказок -->
+        <button type="submit" class="Search_but">Найти</button>
+        </form>
+
+        <div class="quick-actions">
+            <button id="themeToggle" class="btn" type="button">День/Ночь</button>
+            <button id="showTime" class="btn" type="button">Показать время</button>
+            <span id="liveTime" class="time-pill" aria-live="polite"></span>
+        </div>
+    </div>
+</header>
+
+<!-- Main container -->
+
+<div class="container app">
+
+        <!-- Левая навигация (иконки можно заменить текстом) -->
+        <nav class="sidenav" aria-label="Быстрая навигация">
+            <ul>
+                <li><a href="home.html">Главная</a></li>
+                <li><a href="courses.html">Курсы</a></li>
+                <li><a class="active" href="calendar.html">Календарь</a></li>
+                <li><a href="file.html">Файлы</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
+
+<!-- Контент -->
+<main class="Wrapper-calendar-content">
+  <div class="calendar-container">
+
+    <!-- Левая часть (календарь) -->
+    <div class="calendar">
+      <div class="site-layout-background">
+        <h2 class="ant-typography">
+          Календарь для пользователя LMS
+        </h2>
+        <div class="desktop-table">
+          <div class="ant-table-wrapper">
+            <div class="ant-spin-nested-loading">
+              <div class="ant-spin-container">
+                <div class="ant-table ant-table-middle ant-table-bordered">
+                  <div class="ant-table-container">
+                    <div class="ant-table-content">
+                      <table>
+                        <colgroup>
+                          <col style="width: 10%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                          <col style="width: 15%;">
+                        </colgroup>
+                        <thead id="Row-cal-the">
+                          <tr>
+                            <th>Time</th>
+                            <th>Понедельник</th>
+                            <th>Вторник</th>
+                            <th>Среда</th>
+                            <th>Четверг</th>
+                            <th>Пятница</th>
+                            <th>Суббота</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>08:00 - 10:00</td>
+                            <td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td><td></td><td></td><td></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>10:00 - 12:00</td>
+                            <td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td><td></td><td></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>12:00 - 14:00</td>
+                            <td></td><td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td><td></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>14:00 - 16:00</td>
+                            <td></td><td></td><td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>16:00 - 18:00</td>
+                            <td></td><td></td><td></td><td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td><td></td>
+                          </tr>
+                          <tr>
+                            <td>18:00 - 20:00</td>
+                            <td></td><td></td><td></td><td></td><td></td><td><b>Дисциплина:</b> Web Technologies <b>C1.234</b></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Правая часть (задачи) -->
+<div class="task">
+    <div class="ant-card ant-card-bordered">
+        <div class="ant-card-body">
+            <h3 class="ant-typography">Часто задаваемые вопросы</h3>
+            
+            <div class="accordion">
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <b>Web Technologies</b> Assignment 2
+                    </button>
+                    <div class="accordion-content">
+                        <p>Это ответ на вопрос по Web Technologies. Здесь может быть описание задания, сроки или другая полезная информация.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <b>Finance</b> Midterm 1 part
+                    </button>
+                    <div class="accordion-content">
+                        <p>Это ответ на вопрос по Finance. Здесь может быть описание задания, сроки или другая полезная информация.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <b>Calculus</b> Final Exam
+                    </button>
+                    <div class="accordion-content">
+                        <p>Это ответ на вопрос по Calculus. Здесь может быть описание задания, сроки или другая полезная информация.</p>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </div>
+</div>
+</main>
+
+
+</div>
+<!-- Подвал -->
+<footer class="site-footer" role="contentinfo">
+    <div class="container row">
+        <nav aria-label="Ссылки подвала">
+            <ul class="footlinks">
+                <li><a href="#">Справка</a></li>
+                <li><a href="#">Поддержка</a></li>
+                <li><a href="#">Политика</a></li>
+            </ul>
+        </nav>
+        <small class="copy">© 2025 My University</small>
+    </div>
+</footer>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+
+
+</body>
+</html>

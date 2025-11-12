@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль- AITU LMS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scroll-progress-wrapper">
+        <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    </div>
+
+<header class="site-header" role="banner" style="grid-area:header">
+    <div class="container row" style="width:100%">
+        <div class="brand">
+            <div class="logo" aria-hidden="true"></div>
+            <a class="brand-name" href="#">My University · LMS</a>
+        </div>
+
+        <nav class="topnav" aria-label="Основное меню">
+            <ul id="topMenu" role="menubar">
+                <li role="none"><a role="menuitem" href="Courses.html" tabindex="-1">Курсы</a></li>
+                <li role="none"><a role="menuitem" href="calendar.html"  tabindex="0">Календарь</a></li>
+                <li role="none"><a role="menuitem" href="#" tabindex="-1">Поддержка</a></li>
+            </ul>
+        </nav>
+
+        <form role="search" aria-label="Поиск" class="search">
+        <input type="search" id="search-input" placeholder="Поиск по курсам…">
+        <ul id="suggestions"></ul> <!-- список подсказок -->
+        <button type="submit" class="Search_but">Найти</button>
+        </form>
+
+        <div class="quick-actions">
+            <button id="themeToggle" class="btn" type="button">День/Ночь</button>
+            <button id="showTime" class="btn" type="button">Показать время</button>
+            <span id="liveTime" class="time-pill" aria-live="polite"></span>
+        </div>
+    </div>
+</header>
+
+
+    <div class="container app">
+        <nav class="sidenav" aria-label="Быстрая навигация">
+            <ul>
+                <li><a href="home.html">Главная</a></li>
+                <li><a href="courses.html">Курсы</a></li>
+                <li><a href="calendar.html">Календарь</a></li>
+                <li><a href="file.html">Файлы</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+                <li><a class="active" href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
+
+        <main id="maincontent" role="main">
+            <nav class="breadcrumbs" aria-label="Навигация по разделам">
+                <ol>
+                    <li><a href="home.html">Главная</a></li>
+                    <li aria-current="page">Профиль</li>
+                </ol>
+            </nav>
+
+            <div id="profilePage">
+                <header class="pagehead">
+                    <h1>Мой профиль</h1>
+                    <p class="sub">Управление личной информацией и настройками</p>
+                </header>
+
+                <div class="cards-row">
+                    <!-- Personal Info Card -->
+                    <section class="card card--equal">
+                        <h2>Личная информация</h2>
+                        <div class="profile-header">
+                            <div class="avatar-large">
+                                <img src="https://i.ibb.co.com/cSc6BrL6/Screenshot-2025-09-22-185331.png" 
+                                     alt="Аватар пользователя" id="userAvatar">
+                                <button class="btn-text" onclick="changeAvatar()">Изменить</button>
+                            </div>
+                            <div class="profile-info">
+                                <div class="info-item">
+                                    <label>Имя:</label>
+                                    <span id="userFirstName">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Фамилия:</label>
+                                    <span id="userLastName">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Email:</label>
+                                    <span id="userEmail">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Группа:</label>
+                                    <span id="userGroup">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>ID студента:</label>
+                                    <span id="userId">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__actions">
+                            <button class="btn" onclick="editProfile()">Редактировать профиль</button>
+                        </div>
+                    </section>
+
+                    <!-- Academic Info Card -->
+                    <section class="card card--equal">
+                        <h2>Академическая информация</h2>
+                        <div class="academic-info">
+                            <div class="info-item">
+                                <label>Факультет:</label>
+                                <span id="userFaculty">Информационные технологии</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Специальность:</label>
+                                <span id="userMajor">Компьютерные науки</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Год поступления:</label>
+                                <span id="userYear">2024</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Средний балл:</label>
+                                <span id="userGPA">-</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Статус:</label>
+                                <span class="status-badge active" id="userStatus">Активный</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Grades Section -->
+                <section class="card">
+                    <h2>Успеваемость</h2>
+                    <div id="gradesContainer">
+                        <div class="loading">Загрузка оценок...</div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section class="card">
+                    <h2>Настройки</h2>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <label>Уведомления по email</label>
+                            <label class="switch">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>SMS уведомления</label>
+                            <label class="switch">
+                                <input type="checkbox" id="smsNotifications">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>Язык интерфейса</label>
+                            <select id="languageSelect">
+                                <option value="ru">Русский</option>
+                                <option value="en">English</option>
+                                <option value="kz">Қазақша</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card__actions">
+                        <button class="btn" onclick="saveSettings()">Сохранить настройки</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container row">
+            <nav aria-label="Ссылки подвала">
+                <ul class="footlinks">
+                    <li><a href="support.html">Справка</a></li>
+                    <li><a href="support.html">Поддержка</a></li>
+                    <li><a href="support.html">Политика</a></li>
+                </ul>
+            </nav>
+            <small class="copy">Made by Team Insignia</small>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+
+
+</body>
+</html>

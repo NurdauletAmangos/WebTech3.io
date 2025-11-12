@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - AITU LMS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-container">
+                <img src="https://static.tildacdn.pro/tild3632-6531-4436-a133-333134313137/aitu-logo_.png" 
+                     alt="AITU Logo" class="login-logo">
+            </div>
+            
+            <form id="loginForm" class="auth-form" style="display: block;">
+                <h2>Вход в систему</h2>
+                
+                <input type="email" class="login-input" placeholder="Email" required>
+                <div class="error-message"></div>
+                
+                <input type="password" class="login-input" placeholder="Пароль" required>
+                <div class="error-message"></div>
+                
+                <div class="forgot-password">
+                    <a href="profile.html">Забыли пароль?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">Войти</button>
+                
+                
+                <div class="auth-switch">
+                    <span>Нет аккаунта? </span>
+                    <button type="button" class="text-btn" onclick="showRegisterForm()">Зарегистрироваться</button>
+                </div>
+            </form>
+            
+            <form id="registerForm" class="auth-form" style="display: none;">
+                <h2>Регистрация</h2>
+                
+                <div class="name-fields">
+                    <input type="text" class="login-input" placeholder="Имя" required>
+                    <input type="text" class="login-input" placeholder="Фамилия" required>
+                </div>
+                
+                <input type="email" class="login-input" placeholder="Email" required>
+                <div class="error-message"></div>
+                
+                <input type="password" class="login-input" placeholder="Пароль" required>
+                <div class="error-message"></div>
+                
+                <input type="password" class="login-input" placeholder="Подтвердите пароль" required>
+                <div class="error-message"></div>
+                
+                <input type="text" class="login-input" placeholder="Группа" required>
+                
+                <button type="submit" class="login-btn">Зарегистрироваться</button>
+                
+                <div class="auth-switch">
+                    <span>Уже есть аккаунт? </span>
+                    <button type="button" class="text-btn" onclick="showLoginForm()">Войти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
